@@ -4,10 +4,13 @@
  */
 package clases;
 
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 /**
  *
  * @author DAM2P
  */
+@XmlRootElement(name = "personaje")
 public class Personaje {
     
     private String nombre;
@@ -24,6 +27,7 @@ public class Personaje {
     /**
      * @return the nombre
      */
+    @XmlElement
     public String getNombre() {
         return nombre;
     }
@@ -38,6 +42,7 @@ public class Personaje {
     /**
      * @return the rango
      */
+    @XmlElement
     public String getRango() {
         return rango;
     }

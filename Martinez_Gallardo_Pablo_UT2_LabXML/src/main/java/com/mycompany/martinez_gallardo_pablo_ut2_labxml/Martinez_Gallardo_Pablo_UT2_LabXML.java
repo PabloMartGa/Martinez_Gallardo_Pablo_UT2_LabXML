@@ -4,6 +4,10 @@
 
 package com.mycompany.martinez_gallardo_pablo_ut2_labxml;
 
+import clases.Personaje;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Marshaller;
 import java.io.File;
 import java.lang.classfile.Attributes;
 import javax.xml.parsers.DocumentBuilder;
@@ -56,7 +60,9 @@ public class Martinez_Gallardo_Pablo_UT2_LabXML {
         }
         
         
+        
         //=========================================================================================================================================//
+        
         
         
         try {
@@ -99,10 +105,27 @@ public class Martinez_Gallardo_Pablo_UT2_LabXML {
         }
         
         
+        
         //========================================================================================================================================//
 
         
         
+        try {
+            Personaje luke = new Personaje("Luke Skywalker", "Comandante / Caballero Jedi");  //se crea al personaje Luke
+            
+            JAXBContext context = JAXBContext.newInstance(Personaje.class);  //con JAXBContext decimos con qué clase se va a trabajar
+            
+            Marshaller marshaller = context.createMarshaller();  //con Marshaller pasamos la clase Java a XML
+            
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+            marshaller.marshal(luke, System.out);
+            marshaller.marshal(luke, new File("rebelde.xml"));
+            
+            System.out.println("\n>> Informe de inteligencia generado en 'rebelde.xml'");
+            
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
         
     }
 }
